@@ -1,0 +1,30 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh-CN">
+<body>
+<audio id="myaudio" src="http://127.0.0.1:3000/1.mp3" controls="controls" autoplay="autoplay" onended="reloadPage()"  style="width: 500px">
+Your browser does not support the audio element.
+</audio>
+</body>
+<script>
+function reloadPage()
+{
+	// window.location.reload(true)
+	
+	var a = document.getElementById("myaudio").src.split('/')
+	if(a[a.length - 1] == '1.mp3') a[a.length - 1] = '2.mp3'
+	else a[a.length - 1] = '1.mp3'
+
+	console.log('origin  = ' + document.getElementById("myaudio").src)
+	
+	var newsrc = ''
+	for (var i = 0; i < a.length; i++) {
+		if(i != 0) newsrc += '/'
+		newsrc += a[i]
+	}
+	
+	document.getElementById("myaudio").src = newsrc
+	console.log('finally = ' + document.getElementById("myaudio").src)
+	document.getElementById("myaudio").play();
+}
+</script>
+</html>
